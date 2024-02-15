@@ -1,16 +1,24 @@
 import os
 import emoji
 
+
 class Library:
     def __init__(self):
         if os.path.exists("book.txt")==False:
-            first_line=("id","Book Name", "Author", "Release Date", "# of Pages")
-            f=open("book.txt","a+")
-            for item in first_line:       
-                f.write("{:30}".format(item))
-                
+            first_line=["Book Name", "Author", "Release Date", "# of Pages", "Aktif Mi?"]
+            self.writeFile(first_line)
     id=1
+    isActive=True
+    def writeFile(self,line):
+        f=open("book.txt","a+")
+        f.write("\n")
+        for item in line:
+            if item==line[0] or item==line[1]:
+               f.write("{:50}".format(item))
+            else: f.write("{:15}".format(item))       
     def menu(self):
+        message="Please choose an action"
+        print(message.center(50))
         menuList=["Press 1 to ADD  a book",
                   "Press 2 to DELETE  a book",
                   "Press 3 to LIST",
@@ -36,9 +44,10 @@ class Library:
         author=input("Author Name?")
         releaseDate=input("Release Date?")
         pages=input("Number of Pages?")
-        bookAdd=[str(self.id),bookname,author,releaseDate,pages]
-        f.write("\n")
-        for item in bookAdd:       
-            f.write("{:30}".format(item))
-        self.id+=1    
+        bookAdd=[bookname,author,releaseDate,pages,str(self.isActive)]   
+        self.writeFile(bookAdd)
+        
+       
+       
+
             

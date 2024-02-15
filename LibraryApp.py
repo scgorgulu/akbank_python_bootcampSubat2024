@@ -1,9 +1,10 @@
 #Coded by Serhat Çağrı Görgülü
 from Library import Library
-
-print("Welcome to Global Ai Library\nPlease choose an action")
+message="Welcome to Global Ai Library"
+print(message.center(50,"*"))
 akbank=Library()
 akbank.menu()
+
 
 
 
