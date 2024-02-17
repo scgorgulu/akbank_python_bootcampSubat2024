@@ -9,13 +9,13 @@ class Library:
         self.year=now.strftime("%Y")
         if os.path.exists(file_name)==False:
             self.file_name=file_name
-            self.f=open(file_name, "a+")
+            self.f=open(file_name, "a+", encoding='utf-8')
             first_line="Book Name, Author, Release Date, #of Pages"
             self.f.write(first_line)
             self.f.write("\n")
         else: 
             self.file_name=file_name
-            self.f=open(file_name, "a+")
+            self.f=open(file_name, "a+", encoding='utf-8')
             
     def __del__(self):
         self.f.close()
