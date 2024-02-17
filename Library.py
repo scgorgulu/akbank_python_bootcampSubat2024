@@ -17,7 +17,7 @@ class Library:
     def __del__(self):
         self.f.close()
  
-    def menu(self):
+    """ def menu(self):
         message="Please choose an action"
         print(message.center(50))
         menuList=["Press 1 to ADD  a book",
@@ -38,7 +38,7 @@ class Library:
             elif menuAction=="q":
                 print(emoji.emojize("Have a nice day :red_heart:", variant="emoji_type"))
                 break
-            else: print("Invalid action\nTry again\n")
+            else: print("Invalid action\nTry again\n") """
        
     def add_book(self):
         #f=open("book.txt", "a+")

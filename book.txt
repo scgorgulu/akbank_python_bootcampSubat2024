@@ -3,3 +3,4 @@ serhat, cagri, gorgulu, 1985
 yeter, sevinc, sevinc, 1964
 zeynep, gorgulu, gorgulu, 1996
 ismail, sevinc, 1900, 1985
+kartal, kanarya, aslan, 1214
