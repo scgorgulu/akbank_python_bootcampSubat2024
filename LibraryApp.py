@@ -2,7 +2,7 @@
 from Library import Library
 message="Welcome to Global Ai Library"
 print(message.center(50,"*"))
-akbank=Library()
+akbank=Library("book.txt")
 akbank.menu()
 
 
