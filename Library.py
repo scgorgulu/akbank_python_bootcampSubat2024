@@ -5,17 +5,12 @@ import emoji
 class Library:
     def __init__(self):
         if os.path.exists("book.txt")==False:
-            first_line=["Book Name", "Author", "Release Date", "# of Pages", "Aktif Mi?"]
-            self.writeFile(first_line)
-    id=1
-    isActive=True
-    def writeFile(self,line):
-        f=open("book.txt","a+")
-        f.write("\n")
-        for item in line:
-            if item==line[0] or item==line[1]:
-               f.write("{:50}".format(item))
-            else: f.write("{:15}".format(item))       
+            first_line="Book Name, Author, Release Date, # of Pages"
+            f=open("book.txt", "a+")
+            f.write(first_line)
+            f.write("\n")
+        else: f=open("book.txt", "a+")   
+ 
     def menu(self):
         message="Please choose an action"
         print(message.center(50))
@@ -27,27 +22,73 @@ class Library:
             print(*menuList, sep="\n")  
             menuAction=input()
             if menuAction=="1":
-                self.addBook()
+                self.add_book()
                 print("book is added")
             elif menuAction=="2":
+                self.delete_book()
                 print("book is deleted")
             elif menuAction=="3":
-                print("books are listed")
+                self.list_book()
             elif menuAction=="q":
                 print(emoji.emojize("Have a nice day :red_heart:", variant="emoji_type"))
                 break
             else: print("Invalid action\nTry again\n")
        
-    def addBook(self):
+    def add_book(self):
         f=open("book.txt", "a+")
-        bookname=input("Name of Book?")
-        author=input("Author Name?")
-        releaseDate=input("Release Date?")
-        pages=input("Number of Pages?")
-        bookAdd=[bookname,author,releaseDate,pages,str(self.isActive)]   
-        self.writeFile(bookAdd)
+        book_name=input("Name of Book?: ")
+        author=input("Author Name?: ")
+        release_date=input("Release Date?: ")
+        pages=input("Number of Pages?: ")
+        new_book=f"{book_name}, {author}, {release_date}, {pages}"
+        print(new_book)
+        f.write(new_book)
+        f.write("\n")
         
+    def delete_book(self):
+        #All content in the lines list
+        f=open("book.txt", "r" )  
+        lines=f.read().splitlines()
+        is_sure=True
+        #the book name has taken
+        book_name=input("Please enter the Book Name to Delete: ")
+        #if the book is in the list or not will be checked in here
+        is_in_list=False
+        while(is_sure):
+            for line in lines:
+                if book_name in line:
+                    is_in_list=True   
+            if is_in_list==False:
+                print("Book Name is not in the List")
+                is_sure=False
+            break
+                
+        #Delete Process start
+        index=0
+        while(is_sure):
+            answer=input(f"{book_name} will be deleted. Do you want to continue? Y or N ?\n")
+            if answer=='Y' or  answer=='y':
+                f=open("book.txt", "w")
+                index_counter=0
+                for line in lines:
+                    if book_name in line:
+                        index=index_counter
+                        break
+                    index_counter+=1
+                for line in lines:
+                    if line==lines[index]:
+                        continue
+                    f.write(line)
+                    f.write("\n")
+                print(f"{book_name} is deleted")
+                break
+            elif answer=='N' or answer=='n':
+                print(f"{book_name} is not deleted")
+                is_sure=False
+            else: print("Invalid Aciton")
        
-       
-
-            
+    def list_book(self):
+        f=open("book.txt","r+")
+        lines=f.read().splitlines()
+        for line in lines:
+            print(line)

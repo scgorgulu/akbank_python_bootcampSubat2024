@@ -1,3 +1,4 @@
-
-Book Name                                         Author                                            Release Date   # of Pages     Aktif Mi?      
-merhaba dunya                                     serhat cagri gorgulu serhat cagri gorgulu         1985           365            True           
+Book Name, Author, Release Date, # of Pages
+serhat, cagri, gorgulu, 1985
+yeter, sevinc, sevinc, 1964
+zeynep, gorgulu, gorgulu, 1996
