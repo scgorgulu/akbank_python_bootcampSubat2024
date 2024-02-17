@@ -16,32 +16,8 @@ class Library:
             
     def __del__(self):
         self.f.close()
- 
-    """ def menu(self):
-        message="Please choose an action"
-        print(message.center(50))
-        menuList=["Press 1 to ADD  a book",
-                  "Press 2 to DELETE  a book",
-                  "Press 3 to LIST",
-                  "Press q to EXIT"]
-        while(True): 
-            print(*menuList, sep="\n")  
-            menuAction=input()
-            if menuAction=="1":
-                self.add_book()
-                print("book is added")
-            elif menuAction=="2":
-                self.delete_book()
-                print("book is deleted")
-            elif menuAction=="3":
-                self.list_book()
-            elif menuAction=="q":
-                print(emoji.emojize("Have a nice day :red_heart:", variant="emoji_type"))
-                break
-            else: print("Invalid action\nTry again\n") """
        
     def add_book(self):
-        #f=open("book.txt", "a+")
         book_name=input("Name of Book?: ")
         author=input("Author Name?: ")
         release_date=input("Release Date?: ")
@@ -51,10 +27,10 @@ class Library:
         self.f.seek(0)
         self.f.write(new_book)
         self.f.write("\n")
+        print(f"{book_name} is added".center(50,"*"))
         
     def delete_book(self):
         #All content in the lines list
-        #f=open("book.txt", "r" )
         self.f.seek(0)  
         lines=self.f.read().splitlines()
         is_sure=True
@@ -67,7 +43,7 @@ class Library:
                 if book_name in line:
                     is_in_list=True   
             if is_in_list==False:
-                print("Book Name is not in the List")
+                print(f"{book_name} is not in the List".center(20,"!"))
                 is_sure=False
             break
                 
@@ -76,7 +52,7 @@ class Library:
         while(is_sure):
             answer=input(f"{book_name} will be deleted. Do you want to continue? Y or N ?\n")
             if answer=='Y' or  answer=='y':
-                delete_file=open(self.file_name, "w")
+                self.f.truncate(0)
                 index_counter=0
                 for line in lines:
                     if book_name in line:
@@ -86,17 +62,16 @@ class Library:
                 for line in lines:
                     if line==lines[index]:
                         continue
-                    delete_file.write(line)
-                    delete_file.write("\n")
-                print(f"{book_name} is deleted")
+                    self.f.write(line)
+                    self.f.write("\n")
+                print(f"{book_name} is deleted".center(50,"*"))
                 break
             elif answer=='N' or answer=='n':
-                print(f"{book_name} is not deleted")
+                print(f"{book_name} is not deleted".center(20,"!"))
                 is_sure=False
-            else: print("Invalid Aciton")
+            else: print("Invalid Aciton".center(50,"*"))
        
     def list_book(self):
-        #f=open("book.txt","r+")
         self.f.seek(0)
         lines=self.f.read().splitlines()
         for line in lines:

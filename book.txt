@@ -2,5 +2,5 @@ Book Name, Author, Release Date, # of Pages
 serhat, cagri, gorgulu, 1985
 yeter, sevinc, sevinc, 1964
 zeynep, gorgulu, gorgulu, 1996
-ismail, sevinc, 1900, 1985
-kartal, kanarya, aslan, 1214
+kahraman asker, serhat cagri, 1985, 1985
+ferrari, zeynep, 12347, 13424
