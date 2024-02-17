@@ -1,9 +1,12 @@
 import os
+from datetime import datetime
 import emoji
 
 
 class Library:
     def __init__(self,file_name):
+        now=datetime.now()
+        self.year=now.strftime("%Y")
         if os.path.exists(file_name)==False:
             self.file_name=file_name
             self.f=open(file_name, "a+")
@@ -16,27 +19,48 @@ class Library:
             
     def __del__(self):
         self.f.close()
-       
+#--------------Adding operation starts here---------------------       
     def add_book(self):
         book_name=input("Name of Book?: ")
         author=input("Author Name?: ")
-        release_date=input("Release Date?: ")
-        pages=input("Number of Pages?: ")
+#Validation of release year
+        while(True):
+            release_date=input("Release Year?: ")
+            try:
+                if int(release_date) <=int(self.year):
+                    break
+                else: print("Invalid data. Please do not enter a future data")
+            except:
+                print("Invalid data. Please enter release year eg: 1985")
+                continue
+#Validation of page number       
+        while(True):
+            pages=input("Number of Pages?: ")
+            try:
+                if int(pages)>0:
+                    break
+                else: print("Invalid data. Please enter a positive number")
+            except:
+                print("Invalid data. Please enter a positive number")
+                continue        
+#Adding Operation       
         new_book=f"{book_name}, {author}, {release_date}, {pages}"
         print(new_book)
+# Reseting line index to zero to avoid from blank lines
         self.f.seek(0)
         self.f.write(new_book)
         self.f.write("\n")
         print(f"{book_name} is added".center(50,"*"))
-        
+#--------------Adding Operation ends here------------------
+#--------------Starting Deletion Operation-----------------                
     def delete_book(self):
-        #All content in the lines list
+#Taking all content in the lines list
         self.f.seek(0)  
         lines=self.f.read().splitlines()
         is_sure=True
-        #the book name has taken
+#Taking the book name
         book_name=input("Please enter the Book Name to Delete: ")
-        #if the book is in the list or not will be checked in here
+#if the book is in the list or not will be checked in here
         is_in_list=False
         while(is_sure):
             for line in lines:
@@ -45,9 +69,8 @@ class Library:
             if is_in_list==False:
                 print(f"{book_name} is not in the List".center(20,"!"))
                 is_sure=False
-            break
-                
-        #Delete Process start
+            break                
+#Delete Process start
         index=0
         while(is_sure):
             answer=input(f"{book_name} will be deleted. Do you want to continue? Y or N ?\n")
@@ -70,10 +93,12 @@ class Library:
                 print(f"{book_name} is not deleted".center(20,"!"))
                 is_sure=False
             else: print("Invalid Aciton".center(50,"*"))
-       
+#--------------Deletion operation ends here----------------
+#--------------Listing operation starts here---------------       
     def list_book(self):
         self.f.seek(0)
         lines=self.f.read().splitlines()
         for line in lines:
             screen_list=line.split(",")
-            print(screen_list[0:2])
+            print(*screen_list[0:2], sep=" , ")
+#-------------Listing operation ends here------------------

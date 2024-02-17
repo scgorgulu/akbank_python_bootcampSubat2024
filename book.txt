@@ -3,4 +3,7 @@ serhat, cagri, gorgulu, 1985
 yeter, sevinc, sevinc, 1964
 zeynep, gorgulu, gorgulu, 1996
 kahraman asker, serhat cagri, 1985, 1985
-ferrari, zeynep, 12347, 13424
+adasd, sadad, 1985, 123123
+sadasd, asdasdas, 2003, -100
+sadasd, asdad, 1000, 100
+sadad, adsad, 1985, 0

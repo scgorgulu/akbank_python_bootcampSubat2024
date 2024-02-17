@@ -5,4 +5,3 @@ The project requires the following:
 - [x] 3.	Addition of an “Exit” property. (optional)
 - [x] 4.	Print any necessary warnings and messages. (optional)
 - [ ] 5.	Interface design. (optional)
-

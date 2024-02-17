@@ -20,7 +20,7 @@ while(True):
         lib.delete_book()
     elif menu_action=="3":
         lib.list_book()
-    elif menu_action=="q":
+    elif menu_action=="q" or menu_action=="Q":
         print(emoji.emojize("Have a nice day :red_heart:", variant="emoji_type"))
         break
     else: print("Invalid action\nTry again\n")
