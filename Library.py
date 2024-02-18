@@ -22,14 +22,23 @@ class Library:
 #--------------Adding operation starts here--------------------- 
               
     def add_book(self):
-        book_name=input("Name of Book?: ")
+#Validation of book name                       
+        while(True):
+            book_name=input("Name of Book?: ")
+            try:
+                if book_name == '':
+                   print("Invalid data. Please enter the name of book eg: Criminal Minds")
+                else: break
+            except:
+                break
 
  #Validation of author               
         while(True):
             author=input("Author Name?: ")
             try:
-                if int(author)==False:
+                if int(author)==False or author == '':
                    print("Invalid data. Please enter the name of author eg: Dostoyovski")
+                else: break
             except:
                 break
 
@@ -132,7 +141,7 @@ class Library:
                 print(f"{book_name} is deleted".center(50,"*"))
                 break
             elif answer=='N' or answer=='n':
-                print(f"{book_name} is not deleted".center(20,"!"))
+                print(f"{book_name} is not deleted".center(50,"!"))
                 is_sure=False
             else: print("Invalid Aciton".center(50,"*"))
 
