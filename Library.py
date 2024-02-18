@@ -1,20 +1,12 @@
 import os
 from datetime import datetime
 
-class Library:
+class Library:  
     def __init__(self,file_name):
-#Taking this year time to use later for once
+        #Taking this year time to use later for once
         now=datetime.now()
         self.year=now.strftime("%Y")
-        if os.path.exists(file_name):
-            self.file_name=file_name
-            self.f=open(file_name, "a+", encoding='utf-8')
-        else:
-            self.file_name=file_name
-            self.f=open(file_name, "a+", encoding='utf-8')
-            first_line="Book Name, Author, Release Date, #of Pages"
-            self.f.write(first_line)
-            self.f.write("\n")           
+        self.f=open(file_name, "a+", encoding='utf-8')    
             
     def __del__(self):
         self.f.close()
@@ -27,7 +19,7 @@ class Library:
             book_name=input("Name of Book?: ")
             try:
                 if book_name == '':
-                   print("Invalid data. Please enter the name of book eg: Criminal Minds")
+                   print("Invalid data. Please enter the name of book eg: Criminal Minds".center(100,"!"),"\n")
                 else: break
             except:
                 break
@@ -36,23 +28,23 @@ class Library:
         while(True):
             author=input("Author Name?: ")
             try:
-                if int(author)==False or author == '':
-                   print("Invalid data. Please enter the name of author eg: Dostoyovski")
+                if int(author) or author == '':
+                   print("Invalid data. Please enter the name of author eg: Dostoyovski".center(100,"!"),"\n")
                 else: break
             except:
                 break
 
 #Validation of release year            
         while(True):
-            release_date=input("Release Year? for BC Enter a negative number eg: -123 for B.C 123: ")
+            release_date=input("Release Year? for BC Enter a negative number eg: -123 for 123 BC: ")
             try:
                 if int(release_date) <=int(self.year):
                     if int(release_date)<0:
                         release_date=f"{int(release_date)*-1} BC"
                     break
-                else: print("Invalid data. Please do not enter a future data")
+                else: print("Invalid data. Please do not enter a future data".center(100,"!"),"\n")
             except:
-                print("Invalid data. Please enter release year eg: 1985")
+                print("Invalid data. Please enter release year eg: 1985".center(100,"!"),"\n")
                 continue
 
 #Validation of page number                   
@@ -61,28 +53,28 @@ class Library:
             try:
                 if int(pages)>0:
                     break
-                else: print("Invalid data. Please enter a positive number")
+                else: print("Invalid data. Please enter a positive number".center(100,"!"),"\n")
             except:
-                print("Invalid data. Please enter a positive number")
+                print("Invalid data. Please enter a positive number".center(100,"!"),"\n")
                 continue
 
 #Adding Operation                  
         new_book=f"{book_name}, {author}, {release_date}, {pages}"
-        lines=self.f.read().splitlines()
-        for line in lines:
-            if new_book ==line:
-                print("Book is already in the list, Please add another book...")
-            else:
-                self.f.seek(0)
-                self.f.write(new_book)
-                self.f.write("\n")
-                print(f"{new_book} is added".center(50,"*"))   
-
-# Reseting line index to zero to avoid from blank lines        
         self.f.seek(0)
-        self.f.write(new_book)
-        self.f.write("\n")
-        print(f"{book_name} is added".center(50,"*"))
+        lines=self.f.read().splitlines()
+        is_in_the_list=False
+        for line in lines:
+            if new_book == line:                
+                is_in_the_list=True
+                break
+        if is_in_the_list:
+            print("Book is already in the list, Please add another book...".center(100,"!"),"\n")
+        else:
+# Reseting line index to zero to avoid from blank lines    
+            self.f.seek(0)
+            self.f.write(new_book)
+            self.f.write("\n")
+            print(f"{new_book} is added".center(100,"*"),"\n") 
 
 #--------------Adding Operation ends here------------------
         
@@ -109,7 +101,7 @@ class Library:
                     is_in_list=True                                      
                 index_counter+=1   
             if is_in_list==False:
-                print(f"{book_name} is not in the List".center(50,"!"))
+                print(f"{book_name} is not in the List".center(100,"!"),"\n")
                 is_sure=False
             break
 
@@ -125,7 +117,7 @@ class Library:
                         index_register=[index_register[int(dumb_variable)]]
                         break
                 except:
-                    print("Invalid action. Please check your choice...")
+                    print("Invalid action. Please check your choice...".center(100,"!"),"\n")
                     continue 
 
 #Delete Process start
@@ -138,22 +130,27 @@ class Library:
                         continue
                     self.f.write(line)
                     self.f.write("\n")
-                print(f"{book_name} is deleted".center(50,"*"))
+                print(f"{book_name} is deleted".center(100,"*"),"\n")
                 break
             elif answer=='N' or answer=='n':
-                print(f"{book_name} is not deleted".center(50,"!"))
+                print(f"{book_name} is not deleted".center(100,"!"),"\n")
                 is_sure=False
-            else: print("Invalid Aciton".center(50,"*"))
+            else: print("Invalid Aciton".center(100,"*"),"\n")
 
 #--------------Deletion operation ends here----------------
             
 #--------------Listing operation starts here---------------
                    
     def list_book(self):
-        self.f.seek(0)
+        self.f.seek(0)  
         lines=self.f.read().splitlines()
-        for line in lines:
-            screen_list=line.split(",")
-            print(*screen_list[0:2], sep=" , ")
+        if lines ==[]:
+            print("There is no book in the list".center(100,"!"),"\n")
+        else:
+            print("Book Name, Author")
+            self.f.seek(0)    
+            for line in lines:
+                screen_list=line.split(",")
+                print(*screen_list[0:2], sep=" , ")
 
 #-------------Listing operation ends here------------------
