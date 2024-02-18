@@ -1,8 +1,5 @@
-#Coded by Serhat Çağrı Görgülü
-import os
-import emoji
+#Coded by Serhat Çağrı Görgülü 
 from Library import Library
-
 
 print("Welcome to Global Ai Library".center(50,"*"))
 lib=Library("book.txt")
@@ -21,7 +18,7 @@ while(True):
     elif menu_action=="3":
         lib.list_book()
     elif menu_action=="q" or menu_action=="Q":
-        print(emoji.emojize("Have a nice day :red_heart:", variant="emoji_type"))
+        print("Have a nice day".center(50,"-"))
         break
     else: print("Invalid action\nTry again\n")
 

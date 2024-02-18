@@ -5,6 +5,7 @@ import emoji
 
 class Library:
     def __init__(self,file_name):
+#Taking this year time to use later for once
         now=datetime.now()
         self.year=now.strftime("%Y")
         if os.path.exists(file_name)==False:
@@ -22,12 +23,21 @@ class Library:
 #--------------Adding operation starts here---------------------       
     def add_book(self):
         book_name=input("Name of Book?: ")
-        author=input("Author Name?: ")
+ #Validation of author       
+        while(True):
+            author=input("Author Name?: ")
+            try:
+                if int(author)==False:
+                   print("Invalid data. Please enter the name of author eg: Dostoyovski")
+            except:
+                break
 #Validation of release year
         while(True):
-            release_date=input("Release Year?: ")
+            release_date=input("Release Year? for BC Enter a negative number eg: -123 for B.C 123: ")
             try:
                 if int(release_date) <=int(self.year):
+                    if int(release_date)<0:
+                        release_date=f"{int(release_date)*-1} BC"
                     break
                 else: print("Invalid data. Please do not enter a future data")
             except:
@@ -62,28 +72,25 @@ class Library:
         book_name=input("Please enter the Book Name to Delete: ")
 #if the book is in the list or not will be checked in here
         is_in_list=False
+        index_counter=0
         while(is_sure):
             for line in lines:
-                if book_name in line:
-                    is_in_list=True   
+                book_name_list=line.split(",")
+                if book_name == book_name_list[0]:
+                    is_in_list=True
+                    break                    
+                index_counter+=1   
             if is_in_list==False:
-                print(f"{book_name} is not in the List".center(20,"!"))
+                print(f"{book_name} is not in the List".center(50,"!"))
                 is_sure=False
             break                
 #Delete Process start
-        index=0
         while(is_sure):
             answer=input(f"{book_name} will be deleted. Do you want to continue? Y or N ?\n")
             if answer=='Y' or  answer=='y':
                 self.f.truncate(0)
-                index_counter=0
                 for line in lines:
-                    if book_name in line:
-                        index=index_counter
-                        break
-                    index_counter+=1
-                for line in lines:
-                    if line==lines[index]:
+                    if line==lines[index_counter]:
                         continue
                     self.f.write(line)
                     self.f.write("\n")

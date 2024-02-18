@@ -4,4 +4,5 @@ The project requires the following:
 - [x] 2.	Completion of the desired work in the desired manner (mandatory)
 - [x] 3.	Addition of an “Exit” property. (optional)
 - [x] 4.	Print any necessary warnings and messages. (optional)
-- [ ] 5.	Interface design. (optional)
+- [ ] 5.	Update function (optional)
+- [ ] 6.	Interface design. (optional)
