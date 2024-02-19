@@ -83,11 +83,14 @@ class Library:
     def delete_book(self):
 #Taking all content in the lines list        
         self.f.seek(0)  
-        lines=self.f.read().splitlines()
+        lines=self.f.read().splitlines()        
         is_sure=True
-
-#Taking the book name
-        book_name=input("Please enter the Book Name to Delete: ")
+#Checking if the list is empy
+        if lines ==[]:
+            print("There is no book in the list".center(100,"!"),"\n")
+            is_sure=False
+        else:
+            book_name=(input("Please enter the Book Name to Delete: ")).lower()        
 
 #if there is only one book in the list or more and if there is no book in the list will be checked here
         is_in_list=False
@@ -95,7 +98,8 @@ class Library:
         index_counter=0
         while(is_sure):
             for line in lines:
-                book_name_list=line.split(",")
+                dumb_line=line.lower()
+                book_name_list=dumb_line.split(",")
                 if book_name == book_name_list[0]:
                     index_register.append(index_counter)
                     is_in_list=True                                      
@@ -116,6 +120,7 @@ class Library:
                     if int(dumb_variable)<=len(index_register):
                         index_register=[index_register[int(dumb_variable)]]
                         break
+                    else: print("Invalid action. Please check your choice...".center(100,"!"),"\n")
                 except:
                     print("Invalid action. Please check your choice...".center(100,"!"),"\n")
                     continue 
@@ -165,7 +170,7 @@ class Library:
             self.f.seek(0)
             lines=self.f.read().splitlines()
             while(True):
-                keyword_list=(input("Please enter the keyword: ")).upper()
+                keyword_list=(input("Please enter the keyword: ")).lower()
                 try:
                     if keyword_list == '':
                         print("Keyword can not be blank. Please enter a keyword".center(100,"!"),"\n")
@@ -173,7 +178,7 @@ class Library:
                 except:
                     break
             for line in lines:
-                search_line=line.upper()
+                search_line=line.lower()
                 if keyword_list in search_line:
                     print(f"in {lines.index(line)+1}. line: {line} ")
             print("end of search".center(100,"*"), "\n")
