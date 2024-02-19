@@ -7,6 +7,7 @@ print("Please choose an action".center(100))
 menu_list=["Press 1 to ADD  a book",
         "Press 2 to DELETE  a book",
         "Press 3 to LIST",
+        "Press 4 to SEARCH the list",
         "Press q to EXIT"]
 while(True): 
     print(*menu_list, sep="\n")  
@@ -17,6 +18,8 @@ while(True):
         lib.delete_book()
     elif menu_action=="3":
         lib.list_book()
+    elif menu_action=="4":
+        lib.search_list()
     elif menu_action=="q" or menu_action=="Q":
         print("Have a nice day".center(100,"-"),"\n")
         break

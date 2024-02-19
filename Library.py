@@ -154,3 +154,45 @@ class Library:
                 print(*screen_list[0:2], sep=" , ")
 
 #-------------Listing operation ends here------------------
+                
+#-------------Search method starts here------------------
+    def search_list(self):
+        self.f.seek(0)  
+        lines=self.f.read().splitlines()
+        if lines ==[]:
+            print("There is no book in the list".center(100,"!"),"\n")
+        else:
+            self.f.seek(0)
+            lines=self.f.read().splitlines()
+            while(True):
+                keyword_list=(input("Please enter the keyword: ")).upper()
+                try:
+                    if keyword_list == '':
+                        print("Keyword can not be blank. Please enter a keyword".center(100,"!"),"\n")
+                    else: break
+                except:
+                    break
+            for line in lines:
+                search_line=line.upper()
+                if keyword_list in search_line:
+                    print(f"in {lines.index(line)+1}. line: {line} ")
+            print("end of search".center(100,"*"), "\n")
+
+#-------------Search method ends here------------------
+               
+#-------------Update method starts here------------------
+        #codes have not written yet. after project submission. I will work on it.
+
+        """ Hepinize çok teşekkür ederim. Benim için çok faydalı bir bootcamp oldu.
+        Programlama mantığına ve OOP hakimdim ancak hiç aplikasyon kodlamamıştım.
+        Demek istediğim hiç pratiğim yoktu.
+        Python bilgim gerçekten sıfırdı.
+        Çok fazla şey öğrendim.
+        Kendime güvenim arttı.
+        Python programlama diline bayıldım.
+        Bu proje üstünden geliştirmeye devam edeceğim.
+        Arayüz ekleme ve clean code olayına gireceğim.
+        Yapay zeka bootcampına da katılacağım.
+        Diğer bootcamplarda ya da farklı mecralarda görüşmek üzere... """
+
+#-------------Update method ends here------------------
