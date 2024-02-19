@@ -12,8 +12,8 @@ The project requires the following:
 - > Adding Operation:
     can check whether the book in the list or not. and restricts to add the same book.
 - > Deleting Operation:
-    is finding book by its name
-        if there are more books then asks user to choose one of them
+    is finding book by its name.
+        If there are more books then asks user to choose one of them
     asks users if user is sure or not
 - > Listing Operation:
     can check if the list is empty
