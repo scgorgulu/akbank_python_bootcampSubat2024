@@ -165,7 +165,7 @@ class Library:
                 screen_list=line.split(",")
                 print(f"{lines.index(line)+1}- ")
                 print(*screen_list[0:2], sep=" , ")
-        print("end of list".center(100,"*"), "\n")
+            print("end of list".center(100,"*"), "\n")
 #-------------Listing operation ends here------------------
                 
 #-------------Search method starts here------------------
