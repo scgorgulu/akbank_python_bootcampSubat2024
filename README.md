@@ -12,11 +12,12 @@ The project requires the following:
 - > Adding Operation:
     can check whether the book in the list or not. and restricts to add the same book.
 - > Deleting Operation:
+    Controling if the list is empty
     is finding book by its name.
-        If there are more books then asks user to choose one of them
+    If there are more books then asks user to choose one of them
     asks users if user is sure or not
 - > Listing Operation:
     can check if the list is empty
 - > Searchin Operation:
-    is searching the list line by keyword and printing all book list if includes that keywords with line number
+    is searching the list line by keyword and printing all book list if includes that keywords with line number.
 - > All inputs are being verified if they are appropriate or not

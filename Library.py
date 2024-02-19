@@ -90,8 +90,15 @@ class Library:
             print("There is no book in the list".center(100,"!"),"\n")
             is_sure=False
         else:
-            book_name=(input("Please enter the Book Name to Delete: ")).lower()        
-
+            while(True):
+                book_name=(input("Please enter the Book Name to Delete: ")).lower()
+                try:
+                    if book_name=="":
+                        print("Book Name can not be blank. Please try again".center(100,"!"),"\n")
+                    else:
+                        break
+                except:
+                    break
 #if there is only one book in the list or more and if there is no book in the list will be checked here
         is_in_list=False
         index_register=[]
@@ -152,12 +159,13 @@ class Library:
         if lines ==[]:
             print("There is no book in the list".center(100,"!"),"\n")
         else:
-            print("Book Name, Author")
+            print("#-","\n","Book Name, Author")
             self.f.seek(0)    
             for line in lines:
                 screen_list=line.split(",")
+                print(f"{lines.index(line)+1}- ")
                 print(*screen_list[0:2], sep=" , ")
-
+        print("end of list".center(100,"*"), "\n")
 #-------------Listing operation ends here------------------
                 
 #-------------Search method starts here------------------
