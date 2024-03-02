@@ -159,12 +159,11 @@ class Library:
         if lines ==[]:
             print("There is no book in the list".center(100,"!"),"\n")
         else:
-            print("#-","\n","Book Name, Author")
+            print("#- Book Name, Author")
             self.f.seek(0)    
             for line in lines:
                 screen_list=line.split(",")
-                print(f"{lines.index(line)+1}- ")
-                print(*screen_list[0:2], sep=" , ")
+                print(f"{lines.index(line)+1}- {screen_list[0]},{screen_list[1]}")
             print("end of list".center(100,"*"), "\n")
 #-------------Listing operation ends here------------------
                 
@@ -195,17 +194,5 @@ class Library:
                
 #-------------Update method starts here------------------
         #codes have not written yet. after project submission. I will work on it.
-
-        """ Hepinize çok teşekkür ederim. Benim için çok faydalı bir bootcamp oldu.
-        Programlama mantığına ve OOP hakimdim ancak hiç aplikasyon kodlamamıştım.
-        Demek istediğim hiç pratiğim yoktu.
-        Python bilgim gerçekten sıfırdı.
-        Çok fazla şey öğrendim.
-        Kendime güvenim arttı.
-        Python programlama diline bayıldım.
-        Bu proje üstünden geliştirmeye devam edeceğim.
-        Arayüz ekleme ve clean code olayına gireceğim.
-        Yapay zeka bootcampına da katılacağım.
-        Diğer bootcamplarda ya da farklı mecralarda görüşmek üzere... """
 
 #-------------Update method ends here------------------
